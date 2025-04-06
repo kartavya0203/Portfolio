@@ -68,7 +68,7 @@ export function Hero() {
           <div className="md:w-1/2 flex justify-center">
             <div className="relative w-full max-w-md h-80 md:h-96">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/images/Kartavya.jpg"
                 alt="Hero Image"
                 fill
                 className="object-contain"

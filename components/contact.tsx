@@ -1,16 +1,26 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import emailjs from "@emailjs/browser"
+import { useState, useRef } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { useToast } from "@/components/ui/use-toast"
+
+// 🌟 Confetti packages
+import Confetti from "react-confetti"
+import { useWindowSize } from "react-use"
 
 export function Contact() {
+  const { toast } = useToast()
+  const formRef = useRef<HTMLFormElement>(null)
+  const { width, height } = useWindowSize() // 🌟 Get current window size
+  const [showConfetti, setShowConfetti] = useState(false) // 🌟 Confetti toggle
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,31 +37,69 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    e.stopPropagation()
+
+    if (window.history && window.history.replaceState) {
+      const cleanUrl = window.location.protocol + "//" +
+        window.location.host +
+        window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      )
+      .then((response) => {
+        console.log("✅ EmailJS Success", response.status, response.text)
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    })
-    setIsSubmitting(false)
+        setShowConfetti(true) // 🌟 Trigger confetti
+        setTimeout(() => setShowConfetti(false), 3000) // 🌟 Auto-hide after 3s
 
-    // Show success message (in a real app, you'd use a toast or alert)
-    alert("Message sent successfully!")
+        toast({
+          title: "Message sent!",
+          description: "I'll get back to you as soon as possible.",
+        })
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+      })
+      .catch((err) => {
+        console.error("❌ EmailJS Error", err)
+
+        toast({
+          title: "Something went wrong!",
+          description: "Failed to send message. Please try again later.",
+          variant: "destructive",
+        })
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+      })
   }
 
   return (
     <section id="contact" className="py-16">
+      {/* 🌟 Confetti Display */}
+      {showConfetti && <Confetti width={width} height={height} numberOfPieces={250} gravity={0.2} />}
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-2">
-            📬 Contact
-          </Badge>
+          <Badge variant="outline" className="mb-2">📬 Contact</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or want to discuss a potential collaboration? Whether it's web development or data
@@ -91,7 +139,7 @@ export function Contact() {
                   <MapPin className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-bold">Location</h3>
-                    <p className="text-muted-foreground">Ahmedabad,Gujarat</p>
+                    <p className="text-muted-foreground">Ahmedabad, Gujarat</p>
                   </div>
                 </div>
               </CardContent>
@@ -101,12 +149,10 @@ export function Contact() {
           <div className="lg:col-span-2">
             <Card>
               <CardContent className="pt-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4" method="dialog">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Name
-                      </label>
+                      <label htmlFor="name" className="text-sm font-medium">Name</label>
                       <Input
                         id="name"
                         name="name"
@@ -117,9 +163,7 @@ export function Contact() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
+                      <label htmlFor="email" className="text-sm font-medium">Email</label>
                       <Input
                         id="email"
                         name="email"
@@ -133,9 +177,7 @@ export function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
-                      Subject
-                    </label>
+                    <label htmlFor="subject" className="text-sm font-medium">Subject</label>
                     <Input
                       id="subject"
                       name="subject"
@@ -147,9 +189,7 @@ export function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="text-sm font-medium">Message</label>
                     <Textarea
                       id="message"
                       name="message"
@@ -173,4 +213,3 @@ export function Contact() {
     </section>
   )
 }
-

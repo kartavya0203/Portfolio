@@ -52,7 +52,7 @@ const dataServices = [
     icon: <Database className="h-10 w-10 text-primary" />,
   },
   {
-    id: 4,
+    id: 8,
     title: "Data Visualization",
     description: "Clear, compelling visualizations that communicate complex data insights in an accessible format.",
     icon: <PieChart className="h-10 w-10 text-primary" />,

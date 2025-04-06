@@ -29,7 +29,7 @@ export function Footer() {
 
           <div className="text-sm text-muted-foreground">
             <p className="flex items-center justify-center">
-              Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> by John Doe
+              Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> by Kartavya Valand
             </p>
             <p>© {new Date().getFullYear()} All rights reserved.</p>
           </div>

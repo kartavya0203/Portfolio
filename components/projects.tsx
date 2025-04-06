@@ -11,10 +11,10 @@ const projects = [
     title: "Stock Vault",
     description:
       "A full-featured Billing Software platform with Invoice Generation, Sales Analysis, and admin dashboard.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/Stock_Vault.png?height=400&width=600",
     tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB","Django-REST-Framework"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/kartavya0203/StockVault",
     category: "web",
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     title: "Sales Performance Dashboard",
     description:
       "Interactive Power BI dashboard tracking sales performance metrics with drill-down capabilities and forecasting.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/SalesDashboard.png?height=400&width=600",
     tags: ["Power BI", "DAX", "Data Modeling", "Sales Analytics"],
     demoLink: "#",
     githubLink: "#",
@@ -32,20 +32,30 @@ const projects = [
     id: 3,
     title: "Portfolio Website",
     description: "A modern portfolio website with smooth animations and responsive design.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/Portfolio.png?height=400&width=600",
     tags: ["React", "Framer Motion", "Tailwind CSS"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/kartavya0203/Portfolio",
     category: "web",
   },
   {
     id: 4,
     title: "Servify",
     description: "A full-stack service marketplace platform where users can book home services like cleaning, repair, and beauty, inspired by Urban Company.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "PostgreSQL", "Tailwind CSS", "Python"],
+    image: "/images/Servify.png?height=400&width=600",
+    tags: ["React", "PostgreSQL", "Tailwind CSS", "Python","Django-Rest-Famework","RazorPay"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/kartavya0203/Servify",
+    category: "web",
+  },
+  {
+    id: 5,
+    title: "Agro-Predict",
+    description: "Agro Predict is a smart farming platform that uses machine learning to recommend optimal crops and predict yields based on soil and weather conditions.",
+    image: "/images/AgroPredict.png?height=400&width=600",
+    tags: ["React","Python","Django-Rest-Framework", "Tailwind CSS","Postgresql","Razorpay"],
+    demoLink: "#",
+    githubLink: "https://github.com/kartavya0203/Smart_individual",
     category: "web",
   },
 ]
@@ -100,11 +110,11 @@ export function Projects() {
                     <Github className="mr-2 h-4 w-4" /> Code
                   </Link>
                 </Button>
-                <Button size="sm" asChild>
+                {/* <Button size="sm" asChild>
                   <Link href={project.demoLink}>
                     <ExternalLink className="mr-2 h-4 w-4" /> Demo
                   </Link>
-                </Button>
+                </Button> */}
               </CardFooter>
             </Card>
           ))}
