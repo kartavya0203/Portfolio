@@ -16,8 +16,8 @@ const repoName = 'Portfolio'; // <-- exact GitHub repo name
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export', // static export for GitHub Pages
-  basePath: `/${repoName}`, // fixes paths for subdirectory hosting
-  assetPrefix: `/${repoName}/`, // ensures CSS/JS load from correct path
+  basePath: '/Portfolio', // fixes paths for subdirectory hosting
+  assetPrefix: '/Portfolio/', // ensures CSS/JS load from correct path
   eslint: {
     ignoreDuringBuilds: true,
   },
