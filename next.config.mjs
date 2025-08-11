@@ -11,9 +11,13 @@ try {
   }
 }
 
+const repoName = 'Portfolio'; // <-- exact GitHub repo name
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // <---- THIS is the key for static export
+  output: 'export', // static export for GitHub Pages
+  basePath: `/${repoName}`, // fixes paths for subdirectory hosting
+  assetPrefix: `/${repoName}/`, // ensures CSS/JS load from correct path
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -31,9 +35,7 @@ const nextConfig = {
 };
 
 if (userConfig) {
-  // ESM imports will have a "default" property
   const config = userConfig.default || userConfig;
-
   for (const key in config) {
     if (
       typeof nextConfig[key] === 'object' &&
@@ -49,4 +51,4 @@ if (userConfig) {
   }
 }
 
-export default nextConfig;
+export default
