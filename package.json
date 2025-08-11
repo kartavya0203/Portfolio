@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -45,6 +46,7 @@
     "date-fns": "4.1.0",
     "emailjs-com": "^3.2.0",
     "embla-carousel-react": "8.5.1",
+    "framer-motion": "^12.6.3",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
@@ -57,9 +59,10 @@
     "react-resizable-panels": "^2.1.7",
     "react-use": "^17.6.0",
     "recharts": "2.15.0",
-    "sonner": "^1.7.1",
+    "sonner": "^1.7.4",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "toast": "^0.5.4",
     "vaul": "^0.9.6",
     "zod": "^3.24.1"
   },

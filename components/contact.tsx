@@ -1,25 +1,22 @@
 "use client"
 
-import type React from "react"
+import React, { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
-import { useState, useRef } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-
-// 🌟 Confetti packages
+import { toast } from "sonner"
 import Confetti from "react-confetti"
 import { useWindowSize } from "react-use"
 
 export function Contact() {
-  const { toast } = useToast()
   const formRef = useRef<HTMLFormElement>(null)
-  const { width, height } = useWindowSize() // 🌟 Get current window size
-  const [showConfetti, setShowConfetti] = useState(false) // 🌟 Confetti toggle
+  const { width, height } = useWindowSize()
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [formData, setFormData] = useState({
     name: "",
@@ -27,8 +24,6 @@ export function Contact() {
     subject: "",
     message: "",
   })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -39,11 +34,9 @@ export function Contact() {
     e.preventDefault()
     e.stopPropagation()
 
-    if (window.history && window.history.replaceState) {
-      const cleanUrl = window.location.protocol + "//" +
-        window.location.host +
-        window.location.pathname;
-      window.history.replaceState({}, document.title, cleanUrl);
+    if (window.history.replaceState) {
+      const cleanUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+      window.history.replaceState({}, document.title, cleanUrl)
     }
 
     setIsSubmitting(true)
@@ -63,13 +56,10 @@ export function Contact() {
       .then((response) => {
         console.log("✅ EmailJS Success", response.status, response.text)
 
-        setShowConfetti(true) // 🌟 Trigger confetti
-        setTimeout(() => setShowConfetti(false), 3000) // 🌟 Auto-hide after 3s
+        setShowConfetti(true)
+        setTimeout(() => setShowConfetti(false), 3000)
 
-        toast({
-          title: "Message sent!",
-          description: "I'll get back to you as soon as possible.",
-        })
+        toast.success("Message sent successfully!")
 
         setFormData({
           name: "",
@@ -81,11 +71,7 @@ export function Contact() {
       .catch((err) => {
         console.error("❌ EmailJS Error", err)
 
-        toast({
-          title: "Something went wrong!",
-          description: "Failed to send message. Please try again later.",
-          variant: "destructive",
-        })
+        toast.error("Something went wrong! Please try again later.")
       })
       .finally(() => {
         setIsSubmitting(false)
@@ -94,7 +80,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-16">
-      {/* 🌟 Confetti Display */}
       {showConfetti && <Confetti width={width} height={height} numberOfPieces={250} gravity={0.2} />}
 
       <div className="container mx-auto px-4">
@@ -149,7 +134,7 @@ export function Contact() {
           <div className="lg:col-span-2">
             <Card>
               <CardContent className="pt-6">
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4" method="dialog">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">Name</label>
