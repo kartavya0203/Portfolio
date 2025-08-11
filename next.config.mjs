@@ -51,4 +51,4 @@ if (userConfig) {
   }
 }
 
-export default
+export default nextConfig;
