@@ -110,7 +110,7 @@ export function About() {
 
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden">
-              <Image src="./images/Tech.jpg" alt="About Me" fill className="object-cover" />
+              <Image src="/images/Tech.jpg" alt="About Me" fill className="object-cover" />
             </div>
           </div>
         </div>

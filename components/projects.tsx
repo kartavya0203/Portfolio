@@ -30,10 +30,10 @@ const projects = [
       "A full-featured Billing Software platform with Invoice Generation, Sales Analysis, and admin dashboard.",
     fullDescription:
       "Stock Vault is a robust billing and inventory management platform. Features include real-time analytics, customizable invoices, user authentication, and more. It is designed for scalability with Django REST and MongoDB.",
-    image: "./images/Stock_Vault.png?height=400&width=600",
+    image: "/images/Stock_Vault.png?height=400&width=600",
     screenshots: [
-      "./images/Stock_Vault_1.png",
-      "./images/Stock_Vault_2.png",
+      "/images/Stock_Vault_1.png",
+      "/images/Stock_Vault_2.png",
     ],
     tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Django-REST-Framework"],
     demoLink: "#",
@@ -47,8 +47,8 @@ const projects = [
       "Interactive Power BI dashboard tracking sales performance metrics with drill-down capabilities and forecasting.",
     fullDescription:
       "This Power BI project provides deep insights into sales performance using interactive charts, KPI indicators, and region-wise breakdowns. Built using advanced DAX and relationships for analysis.",
-    image: "./images/SalesDashboard.png?height=400&width=600",
-    screenshots: ["./images/SalesDashboard.png"],
+    image: "/images/SalesDashboard.png?height=400&width=600",
+    screenshots: ["/images/SalesDashboard.png"],
     tags: ["Power BI", "DAX", "Data Modeling", "Sales Analytics"],
     demoLink: "#",
     githubLink: "#",
@@ -61,8 +61,8 @@ const projects = [
       "A modern portfolio website with smooth animations and responsive design.",
     fullDescription:
       "This is a personal portfolio website showcasing my skills, services, and projects. It uses Framer Motion for animations, Tailwind for styling, and is fully responsive across devices.",
-    image: "./images/Portfolio.png?height=400&width=600",
-    screenshots: ["./images/Portfolio.png"],
+    image: "/images/Portfolio.png?height=400&width=600",
+    screenshots: ["/images/Portfolio.png"],
     tags: ["React", "Framer Motion", "Tailwind CSS"],
     demoLink: "#",
     githubLink: "https://github.com/kartavya0203/Portfolio",
@@ -75,10 +75,10 @@ const projects = [
       "A full-stack service marketplace platform where users can book home services like cleaning, repair, and beauty.",
     fullDescription:
       "Servify is a service marketplace inspired by Urban Company. Users can book services, make payments with Razorpay, and admins can manage bookings. Built with React, Django, and PostgreSQL.",
-    image: "./images/Servify.png?height=400&width=600",
+    image: "/images/Servify.png?height=400&width=600",
     screenshots: [
-      "./images/Servify_1.png",
-      "./images/Servify_2.png",
+      "/images/Servify_1.png",
+      "/images/Servify_2.png",
     ],
     tags: ["React", "PostgreSQL", "Tailwind CSS", "Python", "Django-Rest-Framework", "RazorPay"],
     demoLink: "#",
@@ -92,10 +92,10 @@ const projects = [
       "Agro Predict is a smart farming platform that uses machine learning to recommend optimal crops and predict yields.",
     fullDescription:
       "Agro Predict uses ML models to suggest crops based on soil and weather. It also offers yield prediction, payment integration, and a user-friendly frontend built with React.",
-    image: "./images/AgroPredict.png?height=400&width=600",
+    image: "/images/AgroPredict.png?height=400&width=600",
     screenshots: [
-      "./images/AgroPredict_1.png",
-      "./images/AgroPredict_2.png",
+      "/images/AgroPredict_1.png",
+      "/images/AgroPredict_2.png",
     ],
     tags: ["React", "Python", "Django-Rest-Framework", "Tailwind CSS", "Postgresql", "Razorpay"],
     demoLink: "#",
@@ -109,8 +109,8 @@ const projects = [
       "Interactive Power BI dashboard created for Toy Fiesta, a Mexican toy store company, to track sales performance with drill-down and forecasting features.",
     fullDescription:
       "This Power BI project was developed for Toy Fiesta, a well-known Mexican toy store company, with the goal of enabling data-driven decision-making across their sales operations. The interactive dashboard offers a comprehensive view of sales performance, allowing stakeholders to explore key metrics such as revenue trends, top-performing products, and seasonal variations. Advanced DAX functions were utilized to create dynamic visualizations, enabling drill-down capabilities by product categories, regions, and time periods. The dashboard also includes predictive forecasting to assist in inventory planning and marketing strategies. Through intuitive visuals and a user-friendly interface, Toy Fiesta can now gain real-time insights into their business and make informed decisions that drive growth.",
-   image: "./images/Toy_Fiesta.png?height=400&width=600",
-    screenshots: ["./images/Toy_Fiesta.png"],
+   image: "/images/Toy_Fiesta.png?height=400&width=600",
+    screenshots: ["/images/Toy_Fiesta.png"],
     tags: ["Power BI", "DAX", "Data Modeling", "Sales Analytics"],
     demoLink: "#",
     githubLink: "#",
